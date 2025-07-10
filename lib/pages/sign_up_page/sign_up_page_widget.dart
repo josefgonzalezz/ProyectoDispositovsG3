@@ -71,7 +71,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFEEF1F4),
+        backgroundColor: Color(0xFF040000),
         body: SafeArea(
           top: true,
           child: Stack(
@@ -112,7 +112,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                     image: DecorationImage(
                                       fit: BoxFit.cover,
                                       image: Image.asset(
-                                        'assets/images/f8597b16db9df33ec36cbb430103ff0b.jpg',
+                                        'assets/images/fondo-pantalla-fondo-negro-telefono_764067-1177.jpg',
                                       ).image,
                                     ),
                                   ),
@@ -153,6 +153,8 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                                   .headlineLarge
                                                                   .fontStyle,
                                                         ),
+                                                        color:
+                                                            Color(0xFFFAFBFB),
                                                         fontSize: 30.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -1890,7 +1892,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                       EdgeInsetsDirectional
                                                           .fromSTEB(0.0, 0.0,
                                                               0.0, 0.0),
-                                                  color: Color(0xFF02010B),
+                                                  color: Color(0xFFEFEEF6),
                                                   textStyle:
                                                       FlutterFlowTheme.of(
                                                               context)
