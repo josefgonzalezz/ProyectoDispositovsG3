@@ -181,17 +181,41 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // HomePage
   {
-    'yrw11p43': {
-      'es': 'Hello World',
-      'en': '',
-    },
-    'wu3p6ulq': {
-      'es': 'Hello World',
-      'en': '',
-    },
     'bmenjvev': {
       'es': 'Inicio',
       'en': 'Home',
+    },
+    'h0ihifbp': {
+      'es': 'Hello World',
+      'en': '',
+    },
+    'os8doy3t': {
+      'es': 'Hello World',
+      'en': '',
+    },
+    'n7at5gox': {
+      'es': 'Hello World',
+      'en': '',
+    },
+    'ua4nyoa2': {
+      'es': 'Hello World',
+      'en': '',
+    },
+    'gn7daic8': {
+      'es': 'Hello World',
+      'en': '',
+    },
+    'm0v6etob': {
+      'es': 'Hello World',
+      'en': '',
+    },
+    'vks1r6if': {
+      'es': 'Hello World',
+      'en': '',
+    },
+    'qhsf4a3m': {
+      'es': 'Hello World',
+      'en': '',
     },
     '02vjg8ug': {
       'es': 'Inicio',
