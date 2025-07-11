@@ -3,10 +3,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 
 import '/auth/custom_auth/custom_auth_user_provider.dart';
 
+import '/main.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
@@ -25,8 +25,8 @@ class AppStateNotifier extends ChangeNotifier {
   static AppStateNotifier? _instance;
   static AppStateNotifier get instance => _instance ??= AppStateNotifier._();
 
-  ProyectoMovilesG3AuthUser? initialUser;
-  ProyectoMovilesG3AuthUser? user;
+  GestordetareasAuthUser? initialUser;
+  GestordetareasAuthUser? user;
   bool showSplashImage = true;
   String? _redirectLocation;
 
@@ -51,7 +51,7 @@ class AppStateNotifier extends ChangeNotifier {
   /// to perform subsequent actions (such as navigation) afterwards.
   void updateNotifyOnAuthChange(bool notify) => notifyOnAuthChange = notify;
 
-  void update(ProyectoMovilesG3AuthUser newUser) {
+  void update(GestordetareasAuthUser newUser) {
     final shouldUpdate =
         user?.uid == null || newUser.uid == null || user?.uid != newUser.uid;
     initialUser ??= newUser;
@@ -78,13 +78,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? HomePageWidget() : SignInPageWidget(),
+          appStateNotifier.loggedIn ? NavBarPage() : SignInPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? HomePageWidget() : SignInPageWidget(),
+              appStateNotifier.loggedIn ? NavBarPage() : SignInPageWidget(),
+        ),
+        FFRoute(
+          name: SignUpPageWidget.routeName,
+          path: SignUpPageWidget.routePath,
+          builder: (context, params) => SignUpPageWidget(),
         ),
         FFRoute(
           name: SignInPageWidget.routeName,
@@ -94,7 +99,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: HomePageWidget.routeName,
           path: HomePageWidget.routePath,
-          builder: (context, params) => HomePageWidget(),
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'HomePage')
+              : HomePageWidget(),
         ),
         FFRoute(
           name: SignOutPageWidget.routeName,
@@ -102,9 +109,29 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => SignOutPageWidget(),
         ),
         FFRoute(
-          name: SignUpPageWidget.routeName,
-          path: SignUpPageWidget.routePath,
-          builder: (context, params) => SignUpPageWidget(),
+          name: ProfilepageWidget.routeName,
+          path: ProfilepageWidget.routePath,
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'Profilepage')
+              : ProfilepageWidget(),
+        ),
+        FFRoute(
+          name: CreateTaskWidget.routeName,
+          path: CreateTaskWidget.routePath,
+          builder: (context, params) => CreateTaskWidget(),
+        ),
+        FFRoute(
+          name: EditTaskPageWidget.routeName,
+          path: EditTaskPageWidget.routePath,
+          asyncParams: {
+            'task': getDoc(['tasks'], TasksRecord.fromSnapshot),
+          },
+          builder: (context, params) => EditTaskPageWidget(
+            task: params.getParam(
+              'task',
+              ParamType.Document,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

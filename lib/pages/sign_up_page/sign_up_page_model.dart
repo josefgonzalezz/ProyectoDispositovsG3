@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
@@ -8,78 +9,161 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 class SignUpPageModel extends FlutterFlowModel<SignUpPageWidget> {
   ///  State fields for stateful widgets in this page.
 
-  // State field(s) for FirstNameTextField widget.
-  FocusNode? firstNameTextFieldFocusNode;
-  TextEditingController? firstNameTextFieldTextController;
+  final formKey2 = GlobalKey<FormState>();
+  final formKey5 = GlobalKey<FormState>();
+  final formKey4 = GlobalKey<FormState>();
+  final formKey3 = GlobalKey<FormState>();
+  final formKey1 = GlobalKey<FormState>();
+  // State field(s) for EmailInput widget.
+  FocusNode? emailInputFocusNode;
+  TextEditingController? emailInputTextController;
+  String? Function(BuildContext, String?)? emailInputTextControllerValidator;
+  String? _emailInputTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        '36n7iuz4' /* Se requiere dirección de corre... */,
+      );
+    }
+
+    if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
+      return FFLocalizations.of(context).getText(
+        'luvrn6db' /* Se necesita un gmail valido */,
+      );
+    }
+    return null;
+  }
+
+  // State field(s) for PasswordInput widget.
+  FocusNode? passwordInputFocusNode;
+  TextEditingController? passwordInputTextController;
+  late bool passwordInputVisibility;
+  String? Function(BuildContext, String?)? passwordInputTextControllerValidator;
+  String? _passwordInputTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'rexeqq0m' /* Se requiere contraseña */,
+      );
+    }
+
+    if (val.length < 7) {
+      return FFLocalizations.of(context).getText(
+        'tsxci53c' /*  al menos 7+ numeros o letras */,
+      );
+    }
+
+    if (!RegExp('^(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d]{8,}\$').hasMatch(val)) {
+      return FFLocalizations.of(context).getText(
+        'x4x9rz9l' /* Se requiere mayuscula */,
+      );
+    }
+    return null;
+  }
+
+  // State field(s) for ConfiurmPasswordInput widget.
+  FocusNode? confiurmPasswordInputFocusNode;
+  TextEditingController? confiurmPasswordInputTextController;
+  late bool confiurmPasswordInputVisibility;
   String? Function(BuildContext, String?)?
-      firstNameTextFieldTextControllerValidator;
-  // State field(s) for LastNameTextField widget.
-  FocusNode? lastNameTextFieldFocusNode;
-  TextEditingController? lastNameTextFieldTextController;
+      confiurmPasswordInputTextControllerValidator;
+  String? _confiurmPasswordInputTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        '46iq3pnv' /* Es necesario que confirme  la ... */,
+      );
+    }
+
+    return null;
+  }
+
+  // State field(s) for NicknameInput widget.
+  FocusNode? nicknameInputFocusNode;
+  TextEditingController? nicknameInputTextController;
+  String? Function(BuildContext, String?)? nicknameInputTextControllerValidator;
+  String? _nicknameInputTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        '1a7o0j7f' /* El apodo es necesario  */,
+      );
+    }
+
+    if (val.length < 3) {
+      return FFLocalizations.of(context).getText(
+        'wagwg2zv' /* El minimo de letras es de 3 */,
+      );
+    }
+    if (val.length > 10) {
+      return FFLocalizations.of(context).getText(
+        'wva6ekki' /* El maximo de letras es de 10 */,
+      );
+    }
+    if (!RegExp('^[a-zA-Z]{3,20}\$').hasMatch(val)) {
+      return FFLocalizations.of(context).getText(
+        '98ckx6ut' /* solo letras, sin espacios */,
+      );
+    }
+    return null;
+  }
+
+  // State field(s) for BirthdateInput widget.
+  FocusNode? birthdateInputFocusNode;
+  TextEditingController? birthdateInputTextController;
+  late MaskTextInputFormatter birthdateInputMask;
   String? Function(BuildContext, String?)?
-      lastNameTextFieldTextControllerValidator;
-  // State field(s) for EmailTextField widget.
-  FocusNode? emailTextFieldFocusNode;
-  TextEditingController? emailTextFieldTextController;
-  String? Function(BuildContext, String?)?
-      emailTextFieldTextControllerValidator;
-  // State field(s) for PasswordTextField widget.
-  FocusNode? passwordTextFieldFocusNode;
-  TextEditingController? passwordTextFieldTextController;
-  late bool passwordTextFieldVisibility;
-  String? Function(BuildContext, String?)?
-      passwordTextFieldTextControllerValidator;
-  // State field(s) for ConfirmPasswordTextField widget.
-  FocusNode? confirmPasswordTextFieldFocusNode;
-  TextEditingController? confirmPasswordTextFieldTextController;
-  late bool confirmPasswordTextFieldVisibility;
-  String? Function(BuildContext, String?)?
-      confirmPasswordTextFieldTextControllerValidator;
-  // State field(s) for BirthdatetextField widget.
-  FocusNode? birthdatetextFieldFocusNode;
-  TextEditingController? birthdatetextFieldTextController;
-  late MaskTextInputFormatter birthdatetextFieldMask;
-  String? Function(BuildContext, String?)?
-      birthdatetextFieldTextControllerValidator;
-  // State field(s) for WeeklyTextField widget.
-  FocusNode? weeklyTextFieldFocusNode;
-  TextEditingController? weeklyTextFieldTextController;
-  String? Function(BuildContext, String?)?
-      weeklyTextFieldTextControllerValidator;
-  // Stores action output result for [Custom Action - parseDate] action in Button widget.
+      birthdateInputTextControllerValidator;
+  String? _birthdateInputTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'b3zrf5y5' /* mm/dd/yyyy es necesario */,
+      );
+    }
+
+    return null;
+  }
+
+  // Stores action output result for [Custom Action - parseDate] action in SubmitButton widget.
   DateTime? birthdate;
-  // Stores action output result for [Custom Action - encryptText] action in Button widget.
-  String? password;
-  // Stores action output result for [Backend Call - Create Document] action in Button widget.
-  UsersRecord? result;
+  // Stores action output result for [Custom Action - encryptText] action in SubmitButton widget.
+  String? passwordd;
+  // Stores action output result for [Backend Call - Create Document] action in SubmitButton widget.
+  UsersRecord? resultt;
+  // Stores action output result for [Backend Call - API (CreateJWT)] action in SubmitButton widget.
+  ApiCallResponse? apiResult;
 
   @override
   void initState(BuildContext context) {
-    passwordTextFieldVisibility = false;
-    confirmPasswordTextFieldVisibility = false;
+    emailInputTextControllerValidator = _emailInputTextControllerValidator;
+    passwordInputVisibility = false;
+    passwordInputTextControllerValidator =
+        _passwordInputTextControllerValidator;
+    confiurmPasswordInputVisibility = false;
+    confiurmPasswordInputTextControllerValidator =
+        _confiurmPasswordInputTextControllerValidator;
+    nicknameInputTextControllerValidator =
+        _nicknameInputTextControllerValidator;
+    birthdateInputTextControllerValidator =
+        _birthdateInputTextControllerValidator;
   }
 
   @override
   void dispose() {
-    firstNameTextFieldFocusNode?.dispose();
-    firstNameTextFieldTextController?.dispose();
+    emailInputFocusNode?.dispose();
+    emailInputTextController?.dispose();
 
-    lastNameTextFieldFocusNode?.dispose();
-    lastNameTextFieldTextController?.dispose();
+    passwordInputFocusNode?.dispose();
+    passwordInputTextController?.dispose();
 
-    emailTextFieldFocusNode?.dispose();
-    emailTextFieldTextController?.dispose();
+    confiurmPasswordInputFocusNode?.dispose();
+    confiurmPasswordInputTextController?.dispose();
 
-    passwordTextFieldFocusNode?.dispose();
-    passwordTextFieldTextController?.dispose();
+    nicknameInputFocusNode?.dispose();
+    nicknameInputTextController?.dispose();
 
-    confirmPasswordTextFieldFocusNode?.dispose();
-    confirmPasswordTextFieldTextController?.dispose();
-
-    birthdatetextFieldFocusNode?.dispose();
-    birthdatetextFieldTextController?.dispose();
-
-    weeklyTextFieldFocusNode?.dispose();
-    weeklyTextFieldTextController?.dispose();
+    birthdateInputFocusNode?.dispose();
+    birthdateInputTextController?.dispose();
   }
 }

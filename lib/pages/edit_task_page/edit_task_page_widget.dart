@@ -1,42 +1,58 @@
-import '/auth/custom_auth/auth_util.dart';
-import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'sign_in_page_model.dart';
-export 'sign_in_page_model.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'edit_task_page_model.dart';
+export 'edit_task_page_model.dart';
 
-class SignInPageWidget extends StatefulWidget {
-  const SignInPageWidget({super.key});
+class EditTaskPageWidget extends StatefulWidget {
+  const EditTaskPageWidget({
+    super.key,
+    required this.task,
+  });
 
-  static String routeName = 'SignInPage';
-  static String routePath = '/signInPage';
+  final TasksRecord? task;
+
+  static String routeName = 'editTaskPage';
+  static String routePath = '/editTaskPage';
 
   @override
-  State<SignInPageWidget> createState() => _SignInPageWidgetState();
+  State<EditTaskPageWidget> createState() => _EditTaskPageWidgetState();
 }
 
-class _SignInPageWidgetState extends State<SignInPageWidget> {
-  late SignInPageModel _model;
+class _EditTaskPageWidgetState extends State<EditTaskPageWidget> {
+  late EditTaskPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => SignInPageModel());
+    _model = createModel(context, () => EditTaskPageModel());
 
-    _model.emailInputTextController ??= TextEditingController();
-    _model.emailInputFocusNode ??= FocusNode();
+    _model.subjectInputTextController ??=
+        TextEditingController(text: widget.task?.subject);
+    _model.subjectInputFocusNode ??= FocusNode();
 
-    _model.passwordInputTextController ??= TextEditingController();
-    _model.passwordInputFocusNode ??= FocusNode();
+    _model.descriptionInputTextController ??=
+        TextEditingController(text: widget.task?.description);
+    _model.descriptionInputFocusNode ??= FocusNode();
+
+    _model.dueDateInputTextController ??= TextEditingController();
+    _model.dueDateInputFocusNode ??= FocusNode();
+
+    _model.dueDateInputMask = MaskTextInputFormatter(mask: '##/##/####');
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {
+          _model.dueDateInputTextController?.text = dateTimeFormat(
+            "MM/dd/yyyy",
+            widget.task?.dueDate,
+            locale: FFLocalizations.of(context).languageCode,
+          );
+        }));
   }
 
   @override
@@ -55,13 +71,13 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFBCD1E9),
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).primary,
           automaticallyImplyLeading: false,
           title: Text(
             FFLocalizations.of(context).getText(
-              'h0amtjbb' /* Iniciar Sesion */,
+              'ap3hbvf7' /* Edit Task */,
             ),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
@@ -87,7 +103,6 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
           top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
                 padding: EdgeInsets.all(5.0),
@@ -96,7 +111,7 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                   children: [
                     Text(
                       FFLocalizations.of(context).getText(
-                        'km01r80s' /* Email */,
+                        '8568i2f9' /* Subject: */,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             font: GoogleFonts.inter(
@@ -117,13 +132,13 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                           ),
                     ),
                     Form(
-                      key: _model.formKey2,
-                      autovalidateMode: AutovalidateMode.always,
+                      key: _model.formKey3,
+                      autovalidateMode: AutovalidateMode.disabled,
                       child: Container(
                         width: 200.0,
                         child: TextFormField(
-                          controller: _model.emailInputTextController,
-                          focusNode: _model.emailInputFocusNode,
+                          controller: _model.subjectInputTextController,
+                          focusNode: _model.subjectInputFocusNode,
                           autofocus: false,
                           textInputAction: TextInputAction.next,
                           obscureText: false,
@@ -149,7 +164,7 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                                       .fontStyle,
                                 ),
                             hintText: FFLocalizations.of(context).getText(
-                              '8yum7wia' /* Correo electronico */,
+                              'hstoq3xc' /* Subject */,
                             ),
                             hintStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
@@ -227,7 +242,7 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                                   maxLength}) =>
                               null,
                           cursorColor: FlutterFlowTheme.of(context).primaryText,
-                          validator: _model.emailInputTextControllerValidator
+                          validator: _model.subjectInputTextControllerValidator
                               .asValidator(context),
                         ),
                       ),
@@ -242,7 +257,161 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                   children: [
                     Text(
                       FFLocalizations.of(context).getText(
-                        '3w2kppyt' /* Contraseña */,
+                        '2unxvlmz' /* Description: */,
+                      ),
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            font: GoogleFonts.inter(
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
+                            ),
+                            letterSpacing: 0.0,
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontStyle,
+                          ),
+                    ),
+                    Form(
+                      key: _model.formKey2,
+                      autovalidateMode: AutovalidateMode.disabled,
+                      child: Padding(
+                        padding: EdgeInsets.all(6.0),
+                        child: Container(
+                          width: 300.0,
+                          child: TextFormField(
+                            controller: _model.descriptionInputTextController,
+                            focusNode: _model.descriptionInputFocusNode,
+                            autofocus: false,
+                            textInputAction: TextInputAction.next,
+                            obscureText: false,
+                            decoration: InputDecoration(
+                              isDense: true,
+                              labelStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
+                                    ),
+                                    letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
+                                  ),
+                              hintText: FFLocalizations.of(context).getText(
+                                'lrm6prn6' /* Descripction */,
+                              ),
+                              hintStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
+                                    ),
+                                    letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
+                                  ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0x00000000),
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0x00000000),
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context).error,
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context).error,
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              filled: true,
+                              fillColor: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  font: GoogleFonts.inter(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontStyle,
+                                ),
+                            maxLines: 5,
+                            minLines: 3,
+                            maxLength: 50,
+                            buildCounter: (context,
+                                    {required currentLength,
+                                    required isFocused,
+                                    maxLength}) =>
+                                null,
+                            cursorColor:
+                                FlutterFlowTheme.of(context).primaryText,
+                            validator: _model
+                                .descriptionInputTextControllerValidator
+                                .asValidator(context),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ].divide(SizedBox(width: 10.0)).around(SizedBox(width: 10.0)),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(5.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Text(
+                      FFLocalizations.of(context).getText(
+                        '0you2z3u' /* Due Date Text: */,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             font: GoogleFonts.inter(
@@ -268,11 +437,11 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                       child: Container(
                         width: 200.0,
                         child: TextFormField(
-                          controller: _model.passwordInputTextController,
-                          focusNode: _model.passwordInputFocusNode,
+                          controller: _model.dueDateInputTextController,
+                          focusNode: _model.dueDateInputFocusNode,
                           autofocus: false,
-                          textInputAction: TextInputAction.next,
-                          obscureText: !_model.passwordInputVisibility,
+                          textInputAction: TextInputAction.send,
+                          obscureText: false,
                           decoration: InputDecoration(
                             isDense: true,
                             labelStyle: FlutterFlowTheme.of(context)
@@ -295,7 +464,7 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                                       .fontStyle,
                                 ),
                             hintText: FFLocalizations.of(context).getText(
-                              'p3iwrenh' /* Contraseña */,
+                              'z2es4utz' /* mm/dd/yyyy */,
                             ),
                             hintStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
@@ -347,19 +516,6 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                             filled: true,
                             fillColor: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
-                            suffixIcon: InkWell(
-                              onTap: () => safeSetState(
-                                () => _model.passwordInputVisibility =
-                                    !_model.passwordInputVisibility,
-                              ),
-                              focusNode: FocusNode(skipTraversal: true),
-                              child: Icon(
-                                _model.passwordInputVisibility
-                                    ? Icons.visibility_outlined
-                                    : Icons.visibility_off_outlined,
-                                size: 22,
-                              ),
-                            ),
                           ),
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
@@ -379,135 +535,50 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                                         .bodyMedium
                                         .fontStyle,
                                   ),
-                          maxLength: 20,
-                          buildCounter: (context,
-                                  {required currentLength,
-                                  required isFocused,
-                                  maxLength}) =>
-                              null,
+                          keyboardType: TextInputType.datetime,
                           cursorColor: FlutterFlowTheme.of(context).primaryText,
-                          validator: _model.passwordInputTextControllerValidator
+                          validator: _model.dueDateInputTextControllerValidator
                               .asValidator(context),
+                          inputFormatters: [_model.dueDateInputMask],
                         ),
                       ),
                     ),
                   ].divide(SizedBox(width: 10.0)).around(SizedBox(width: 10.0)),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.all(5.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    FFButtonWidget(
-                      onPressed: () async {
-                        Function() _navigate = () {};
-                        if (_model.formKey2.currentState == null ||
-                            !_model.formKey2.currentState!.validate()) {
-                          return;
-                        }
-                        if (_model.formKey1.currentState == null ||
-                            !_model.formKey1.currentState!.validate()) {
-                          return;
-                        }
-                        _model.passwords = await actions.encryptText(
-                          _model.passwordInputTextController.text,
-                        );
-                        // Getuser
-                        _model.user = await queryUsersRecordOnce(
-                          queryBuilder: (usersRecord) => usersRecord
-                              .where(
-                                'email',
-                                isEqualTo: _model.emailInputTextController.text,
-                              )
-                              .where(
-                                'password',
-                                isEqualTo: _model.passwords,
-                              ),
-                          singleRecord: true,
-                        ).then((s) => s.firstOrNull);
-                        if (_model.user?.reference != null) {
-                          _model.apiToken = await CreateJWTCall.call(
-                            nickname: _model.user?.nickname,
-                          );
-
-                          if ((_model.apiToken?.succeeded ?? true)) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  'Welcome Back',
-                                  style: TextStyle(
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                  ),
-                                ),
-                                duration: Duration(milliseconds: 4000),
-                                backgroundColor:
-                                    FlutterFlowTheme.of(context).secondary,
-                              ),
-                            );
-                            GoRouter.of(context).prepareAuthEvent();
-                            await authManager.signIn(
-                              authenticationToken: _model.user?.reference.id,
-                              authUid: getJsonField(
-                                (_model.apiToken?.jsonBody ?? ''),
-                                r'''$.auth''',
-                              ).toString(),
-                            );
-                            _navigate = () => context.goNamedAuth(
-                                HomePageWidget.routeName, context.mounted);
-                          } else {
-                            // Error
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  'Please try again later',
-                                  style: TextStyle(
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                  ),
-                                ),
-                                duration: Duration(milliseconds: 4000),
-                                backgroundColor:
-                                    FlutterFlowTheme.of(context).error,
-                              ),
-                            );
-                          }
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                'Invalide User or password!',
-                                style: TextStyle(
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                ),
-                              ),
-                              duration: Duration(milliseconds: 4000),
-                              backgroundColor:
-                                  FlutterFlowTheme.of(context).error,
-                            ),
-                          );
-                        }
-
-                        _navigate();
-
-                        safeSetState(() {});
-                      },
-                      text: FFLocalizations.of(context).getText(
-                        'flhshcud' /* Enviar */,
-                      ),
-                      options: FFButtonOptions(
-                        height: 40.0,
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            16.0, 0.0, 16.0, 0.0),
-                        iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).primary,
-                        textStyle:
-                            FlutterFlowTheme.of(context).titleSmall.override(
-                                  font: GoogleFonts.interTight(
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Align(
+                    alignment: AlignmentDirectional(0.0, 0.0),
+                    child: Padding(
+                      padding: EdgeInsets.all(3.0),
+                      child: FFButtonWidget(
+                        onPressed: () {
+                          print('Button pressed ...');
+                        },
+                        text: FFLocalizations.of(context).getText(
+                          'n13hpn4i' /* Save */,
+                        ),
+                        options: FFButtonOptions(
+                          height: 40.0,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              16.0, 0.0, 16.0, 0.0),
+                          iconPadding: EdgeInsets.all(0.0),
+                          color: Color(0xFF14BF2B),
+                          textStyle:
+                              FlutterFlowTheme.of(context).titleSmall.override(
+                                    font: GoogleFonts.interTight(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontStyle,
+                                    ),
+                                    color: Colors.white,
+                                    letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .fontWeight,
@@ -515,69 +586,42 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                                         .titleSmall
                                         .fontStyle,
                                   ),
-                                  color: Colors.white,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .fontStyle,
-                                ),
-                        elevation: 0.0,
-                        borderRadius: BorderRadius.circular(8.0),
+                          elevation: 0.0,
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
                       ),
                     ),
-                  ].divide(SizedBox(width: 5.0)).around(SizedBox(width: 5.0)),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(5.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      FFLocalizations.of(context).getText(
-                        'e5ocphlr' /* ¿Aún no tienes una cuenta? */,
-                      ),
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            font: GoogleFonts.inter(
-                              fontWeight: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .fontWeight,
-                              fontStyle: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .fontStyle,
-                            ),
-                            letterSpacing: 0.0,
-                            fontWeight: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .fontWeight,
-                            fontStyle: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .fontStyle,
-                          ),
-                    ),
-                    FFButtonWidget(
-                      onPressed: () async {
-                        // Go to Signup
-
-                        context.pushNamed(SignUpPageWidget.routeName);
-                      },
-                      text: FFLocalizations.of(context).getText(
-                        'y6tzclbj' /* Registrarse */,
-                      ),
-                      options: FFButtonOptions(
-                        height: 40.0,
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            16.0, 0.0, 16.0, 0.0),
-                        iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).primary,
-                        textStyle:
-                            FlutterFlowTheme.of(context).titleSmall.override(
-                                  font: GoogleFonts.interTight(
+                  ),
+                  Align(
+                    alignment: AlignmentDirectional(0.0, 0.0),
+                    child: Padding(
+                      padding: EdgeInsets.all(3.0),
+                      child: FFButtonWidget(
+                        onPressed: () async {
+                          context.pushNamed(HomePageWidget.routeName);
+                        },
+                        text: FFLocalizations.of(context).getText(
+                          'wpwzc90a' /* Cancel */,
+                        ),
+                        options: FFButtonOptions(
+                          height: 40.0,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              16.0, 0.0, 16.0, 0.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: Color(0xFFFFFE46),
+                          textStyle:
+                              FlutterFlowTheme.of(context).titleSmall.override(
+                                    font: GoogleFonts.interTight(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontStyle,
+                                    ),
+                                    color: Colors.white,
+                                    letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .fontWeight,
@@ -585,21 +629,13 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                                         .titleSmall
                                         .fontStyle,
                                   ),
-                                  color: Colors.white,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .fontStyle,
-                                ),
-                        elevation: 0.0,
-                        borderRadius: BorderRadius.circular(8.0),
+                          elevation: 0.0,
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
                       ),
                     ),
-                  ].divide(SizedBox(width: 5.0)).around(SizedBox(width: 5.0)),
-                ),
+                  ),
+                ],
               ),
             ],
           ),

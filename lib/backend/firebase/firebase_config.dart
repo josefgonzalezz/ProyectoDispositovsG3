@@ -5,12 +5,12 @@ Future initFirebase() async {
   if (kIsWeb) {
     await Firebase.initializeApp(
         options: FirebaseOptions(
-            apiKey: "AIzaSyDd8qQXoi0FU1Bt7L8-vUYazSk-of0py9Y",
-            authDomain: "proyectomoviles-g3.firebaseapp.com",
-            projectId: "proyectomoviles-g3",
-            storageBucket: "proyectomoviles-g3.firebasestorage.app",
-            messagingSenderId: "439950448525",
-            appId: "1:439950448525:web:8f4c94cac7c5b8db1bcfc4"));
+            apiKey: "AIzaSyBhyVxo2Hip55Sy_Oqvuat5wxdQx_6YB_0",
+            authDomain: "gestor-tareas-josef.firebaseapp.com",
+            projectId: "gestor-tareas-josef",
+            storageBucket: "gestor-tareas-josef.firebasestorage.app",
+            messagingSenderId: "181963553190",
+            appId: "1:181963553190:web:ce8df0bac0c33a29b87767"));
   } else {
     await Firebase.initializeApp();
   }

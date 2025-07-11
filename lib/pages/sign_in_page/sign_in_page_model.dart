@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
@@ -7,33 +8,60 @@ import 'package:flutter/material.dart';
 class SignInPageModel extends FlutterFlowModel<SignInPageWidget> {
   ///  State fields for stateful widgets in this page.
 
-  // State field(s) for EmailTextField widget.
-  FocusNode? emailTextFieldFocusNode;
-  TextEditingController? emailTextFieldTextController;
-  String? Function(BuildContext, String?)?
-      emailTextFieldTextControllerValidator;
-  // State field(s) for PasswordTextField widget.
-  FocusNode? passwordTextFieldFocusNode;
-  TextEditingController? passwordTextFieldTextController;
-  late bool passwordTextFieldVisibility;
-  String? Function(BuildContext, String?)?
-      passwordTextFieldTextControllerValidator;
-  // Stores action output result for [Custom Action - encryptText] action in Button widget.
-  String? password;
-  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
-  UsersRecord? result;
+  final formKey2 = GlobalKey<FormState>();
+  final formKey1 = GlobalKey<FormState>();
+  // State field(s) for EmailInput widget.
+  FocusNode? emailInputFocusNode;
+  TextEditingController? emailInputTextController;
+  String? Function(BuildContext, String?)? emailInputTextControllerValidator;
+  String? _emailInputTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'w7w5l3yh' /* Se requiere dirección de corre... */,
+      );
+    }
+
+    return null;
+  }
+
+  // State field(s) for PasswordInput widget.
+  FocusNode? passwordInputFocusNode;
+  TextEditingController? passwordInputTextController;
+  late bool passwordInputVisibility;
+  String? Function(BuildContext, String?)? passwordInputTextControllerValidator;
+  String? _passwordInputTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'fmjqjubk' /* Se requiere contraseña */,
+      );
+    }
+
+    return null;
+  }
+
+  // Stores action output result for [Custom Action - encryptText] action in SubmitButton widget.
+  String? passwords;
+  // Stores action output result for [Firestore Query - Query a collection] action in SubmitButton widget.
+  UsersRecord? user;
+  // Stores action output result for [Backend Call - API (CreateJWT)] action in SubmitButton widget.
+  ApiCallResponse? apiToken;
 
   @override
   void initState(BuildContext context) {
-    passwordTextFieldVisibility = false;
+    emailInputTextControllerValidator = _emailInputTextControllerValidator;
+    passwordInputVisibility = false;
+    passwordInputTextControllerValidator =
+        _passwordInputTextControllerValidator;
   }
 
   @override
   void dispose() {
-    emailTextFieldFocusNode?.dispose();
-    emailTextFieldTextController?.dispose();
+    emailInputFocusNode?.dispose();
+    emailInputTextController?.dispose();
 
-    passwordTextFieldFocusNode?.dispose();
-    passwordTextFieldTextController?.dispose();
+    passwordInputFocusNode?.dispose();
+    passwordInputTextController?.dispose();
   }
 }

@@ -25,6 +25,11 @@ class UsersRecord extends FirestoreRecord {
   String get password => _password ?? '';
   bool hasPassword() => _password != null;
 
+  // "nickname" field.
+  String? _nickname;
+  String get nickname => _nickname ?? '';
+  bool hasNickname() => _nickname != null;
+
   // "birthdate" field.
   DateTime? _birthdate;
   DateTime? get birthdate => _birthdate;
@@ -40,30 +45,13 @@ class UsersRecord extends FirestoreRecord {
   DateTime? get creationDate => _creationDate;
   bool hasCreationDate() => _creationDate != null;
 
-  // "name" field.
-  String? _name;
-  String get name => _name ?? '';
-  bool hasName() => _name != null;
-
-  // "SecondName" field.
-  String? _secondName;
-  String get secondName => _secondName ?? '';
-  bool hasSecondName() => _secondName != null;
-
-  // "weeklylimit" field.
-  String? _weeklylimit;
-  String get weeklylimit => _weeklylimit ?? '';
-  bool hasWeeklylimit() => _weeklylimit != null;
-
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _password = snapshotData['password'] as String?;
+    _nickname = snapshotData['nickname'] as String?;
     _birthdate = snapshotData['birthdate'] as DateTime?;
     _active = snapshotData['active'] as bool?;
     _creationDate = snapshotData['creationDate'] as DateTime?;
-    _name = snapshotData['name'] as String?;
-    _secondName = snapshotData['SecondName'] as String?;
-    _weeklylimit = snapshotData['weeklylimit'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -102,23 +90,19 @@ class UsersRecord extends FirestoreRecord {
 Map<String, dynamic> createUsersRecordData({
   String? email,
   String? password,
+  String? nickname,
   DateTime? birthdate,
   bool? active,
   DateTime? creationDate,
-  String? name,
-  String? secondName,
-  String? weeklylimit,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'email': email,
       'password': password,
+      'nickname': nickname,
       'birthdate': birthdate,
       'active': active,
       'creationDate': creationDate,
-      'name': name,
-      'SecondName': secondName,
-      'weeklylimit': weeklylimit,
     }.withoutNulls,
   );
 
@@ -132,24 +116,20 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
   bool equals(UsersRecord? e1, UsersRecord? e2) {
     return e1?.email == e2?.email &&
         e1?.password == e2?.password &&
+        e1?.nickname == e2?.nickname &&
         e1?.birthdate == e2?.birthdate &&
         e1?.active == e2?.active &&
-        e1?.creationDate == e2?.creationDate &&
-        e1?.name == e2?.name &&
-        e1?.secondName == e2?.secondName &&
-        e1?.weeklylimit == e2?.weeklylimit;
+        e1?.creationDate == e2?.creationDate;
   }
 
   @override
   int hash(UsersRecord? e) => const ListEquality().hash([
         e?.email,
         e?.password,
+        e?.nickname,
         e?.birthdate,
         e?.active,
-        e?.creationDate,
-        e?.name,
-        e?.secondName,
-        e?.weeklylimit
+        e?.creationDate
       ]);
 
   @override

@@ -5,7 +5,7 @@
 
 
     <application
-        android:label="proyectoMovilesG3"
+        android:label="gestordetareas"
         tools:replace="android:label"
         android:icon="@mipmap/ic_launcher"
         android:requestLegacyExternalStorage="true">
@@ -45,7 +45,7 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="proyectomovilesg3" android:host="proyectomovilesg3.com" />
+                <data android:scheme="gestordetareas" android:host="gestordetareas.com" />
             </intent-filter>
 
         </activity>

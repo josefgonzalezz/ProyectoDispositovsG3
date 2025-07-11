@@ -28,13 +28,13 @@ class CustomAuthManager {
     uid = null;
 
     // Update the current user.
-    proyectoMovilesG3AuthUserSubject.add(
-      ProyectoMovilesG3AuthUser(loggedIn: false),
+    gestordetareasAuthUserSubject.add(
+      GestordetareasAuthUser(loggedIn: false),
     );
     persistAuthData();
   }
 
-  Future<ProyectoMovilesG3AuthUser?> signIn({
+  Future<GestordetareasAuthUser?> signIn({
     String? authenticationToken,
     String? refreshToken,
     DateTime? tokenExpiration,
@@ -66,7 +66,7 @@ class CustomAuthManager {
     );
   }
 
-  ProyectoMovilesG3AuthUser? _updateCurrentUser({
+  GestordetareasAuthUser? _updateCurrentUser({
     String? authenticationToken,
     String? refreshToken,
     DateTime? tokenExpiration,
@@ -78,11 +78,11 @@ class CustomAuthManager {
     this.uid = authUid;
 
     // Update the current user stream.
-    final updatedUser = ProyectoMovilesG3AuthUser(
+    final updatedUser = GestordetareasAuthUser(
       loggedIn: true,
       uid: authUid,
     );
-    proyectoMovilesG3AuthUserSubject.add(updatedUser);
+    gestordetareasAuthUserSubject.add(updatedUser);
     persistAuthData();
     return updatedUser;
   }
@@ -109,11 +109,11 @@ class CustomAuthManager {
     final authTokenExists = authenticationToken != null;
     final tokenExpired =
         tokenExpiration != null && tokenExpiration!.isBefore(DateTime.now());
-    final updatedUser = ProyectoMovilesG3AuthUser(
+    final updatedUser = GestordetareasAuthUser(
       loggedIn: authTokenExists && !tokenExpired,
       uid: uid,
     );
-    proyectoMovilesG3AuthUserSubject.add(updatedUser);
+    gestordetareasAuthUserSubject.add(updatedUser);
   }
 
   void persistAuthData() {
@@ -131,5 +131,5 @@ class CustomAuthManager {
   }
 }
 
-ProyectoMovilesG3AuthUser? currentUser;
+GestordetareasAuthUser? currentUser;
 bool get loggedIn => currentUser?.loggedIn ?? false;

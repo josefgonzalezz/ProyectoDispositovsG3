@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>proyectoMovilesG3</string>
+	<string>gestordetareas</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>proyectoMovilesG3</string>
+	<string>gestordetareas</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleLocalizations</key>
@@ -42,10 +42,10 @@
         <key>CFBundleTypeRole</key>
         <string>Editor</string>
         <key>CFBundleURLName</key>
-        <string>proyectomovilesg3.com</string>
+        <string>gestordetareas.com</string>
         <key>CFBundleURLSchemes</key>
         <array>
-        <string>proyectomovilesg3</string>
+        <string>gestordetareas</string>
         </array>
         </dict>
     </array>

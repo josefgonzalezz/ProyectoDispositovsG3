@@ -144,35 +144,174 @@ bool _isSupportedLocale(Locale locale) {
 }
 
 final kTranslationsMap = <Map<String, Map<String, String>>>[
+  // SignUpPage
+  {
+    'f65o954s': {
+      'es': 'Correo electrónico',
+      'en': 'Email',
+    },
+    'umdw30lf': {
+      'es': 'Dirección de correo electrónico',
+      'en': 'Email Address',
+    },
+    '36n7iuz4': {
+      'es': 'Se requiere dirección de correo electrónico',
+      'en': 'Email Address is required',
+    },
+    'luvrn6db': {
+      'es': 'Se necesita un gmail valido',
+      'en': 'A valid Gmail address is required.',
+    },
+    'jugi0c2z': {
+      'es': 'Por favor, elija una opción del menú desplegable.',
+      'en': 'Please choose an option from the dropdown',
+    },
+    'tiqikg4s': {
+      'es': 'Contraseña',
+      'en': 'Password',
+    },
+    'mavpa89n': {
+      'es': 'Contraseña',
+      'en': 'Password',
+    },
+    'rexeqq0m': {
+      'es': 'Se requiere contraseña',
+      'en': 'Password is required',
+    },
+    'tsxci53c': {
+      'es': ' al menos 7+ numeros o letras',
+      'en': 'at least 7+ numbers or letters',
+    },
+    'x4x9rz9l': {
+      'es': 'Se requiere mayuscula',
+      'en': 'Capital letters are required.',
+    },
+    '15n5bknw': {
+      'es': 'Por favor, elija una opción del menú desplegable.',
+      'en': 'Please choose an option from the dropdown',
+    },
+    'p6fcjelo': {
+      'es': 'Confirmar Contraseña',
+      'en': 'Confirm Password',
+    },
+    'alpp412j': {
+      'es': 'Confirmar Contraseña',
+      'en': 'Confirm Password',
+    },
+    '46iq3pnv': {
+      'es': 'Es necesario que confirme  la contraseña',
+      'en': 'Confirm Password is required',
+    },
+    'fh947za5': {
+      'es': 'Por favor, elija una opción del menú desplegable.',
+      'en': 'Please choose an option from the dropdown',
+    },
+    'tfwl6orw': {
+      'es': 'Apodo',
+      'en': 'Nickname',
+    },
+    'tlyfmnnl': {
+      'es': 'Apodo',
+      'en': 'Nickname',
+    },
+    '1a7o0j7f': {
+      'es': 'El apodo es necesario ',
+      'en': 'Nickname is required',
+    },
+    'wagwg2zv': {
+      'es': 'El minimo de letras es de 3',
+      'en': 'The minimum number of letters is 3',
+    },
+    'wva6ekki': {
+      'es': 'El maximo de letras es de 10',
+      'en': 'The maximum number of letters is 10.',
+    },
+    '98ckx6ut': {
+      'es': 'solo letras, sin espacios',
+      'en': 'Only letters are allowed and no spaces',
+    },
+    'vlxppr3l': {
+      'es': 'Por favor, elija una opción del menú desplegable.',
+      'en': 'Please choose an option from the dropdown',
+    },
+    'ac3w28uq': {
+      'es': 'Fecha de nacimiento',
+      'en': 'Birthdate',
+    },
+    'fk757ryb': {
+      'es': 'mm/dd/yyyy',
+      'en': 'mm/dd/yyyy',
+    },
+    'b3zrf5y5': {
+      'es': 'mm/dd/yyyy es necesario',
+      'en': 'mm/dd/yyyy is required',
+    },
+    'lnce041r': {
+      'es': 'Por favor, elija una opción del menú desplegable.',
+      'en': 'Please choose an option from the dropdown',
+    },
+    'is9fhvdr': {
+      'es': 'Enviar',
+      'en': 'Submit',
+    },
+    '5rr21mqv': {
+      'es': 'Signup',
+      'en': '',
+    },
+    'x2b39hld': {
+      'es': 'Casa',
+      'en': 'Home',
+    },
+  },
   // SignInPage
   {
-    'mdilx0yg': {
-      'es': 'Sign In',
-      'en': '',
-    },
-    '49altw2n': {
-      'es': 'Access your account by entering your email and password.',
-      'en': '',
-    },
-    '4mpmcarp': {
+    'km01r80s': {
       'es': 'Email',
-      'en': '',
+      'en': 'E-mail',
     },
-    '2ieg5bx5': {
-      'es': 'Password',
-      'en': '',
+    '8yum7wia': {
+      'es': 'Correo electronico',
+      'en': 'Email Address',
     },
-    '4xfcxjjl': {
-      'es': 'Sign In',
-      'en': '',
+    'w7w5l3yh': {
+      'es': 'Se requiere dirección de correo electrónico',
+      'en': 'Email Address is required',
     },
-    'ljr3xbzk': {
-      'es': 'First time here?  ',
-      'en': '',
+    '7and8me3': {
+      'es': 'Por favor, elija una opción del menú desplegable.',
+      'en': 'Please choose an option from the dropdown',
     },
-    'ocp2656p': {
-      'es': 'CREATE AN ACCOUNT',
-      'en': '',
+    '3w2kppyt': {
+      'es': 'Contraseña',
+      'en': 'Password',
+    },
+    'p3iwrenh': {
+      'es': 'Contraseña',
+      'en': 'Password',
+    },
+    'fmjqjubk': {
+      'es': 'Se requiere contraseña',
+      'en': 'Password is required',
+    },
+    't0g7vkby': {
+      'es': 'Por favor, elija una opción del menú desplegable.',
+      'en': 'Please choose an option from the dropdown',
+    },
+    'flhshcud': {
+      'es': 'Enviar',
+      'en': 'Submit',
+    },
+    'e5ocphlr': {
+      'es': '¿Aún no tienes una cuenta?',
+      'en': 'Don\'t you have an account yet?',
+    },
+    'y6tzclbj': {
+      'es': 'Registrarse',
+      'en': 'SignUp',
+    },
+    'h0amtjbb': {
+      'es': 'Iniciar Sesion',
+      'en': 'SignIn',
     },
     'gijbuyd3': {
       'es': 'Casa',
@@ -181,41 +320,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // HomePage
   {
+    'z9qdrmjl': {
+      'es': 'Create Task',
+      'en': '',
+    },
     'bmenjvev': {
       'es': 'Inicio',
       'en': 'Home',
-    },
-    'h0ihifbp': {
-      'es': 'Hello World',
-      'en': '',
-    },
-    'os8doy3t': {
-      'es': 'Hello World',
-      'en': '',
-    },
-    'n7at5gox': {
-      'es': 'Hello World',
-      'en': '',
-    },
-    'ua4nyoa2': {
-      'es': 'Hello World',
-      'en': '',
-    },
-    'gn7daic8': {
-      'es': 'Hello World',
-      'en': '',
-    },
-    'm0v6etob': {
-      'es': 'Hello World',
-      'en': '',
-    },
-    'vks1r6if': {
-      'es': 'Hello World',
-      'en': '',
-    },
-    'qhsf4a3m': {
-      'es': 'Hello World',
-      'en': '',
     },
     '02vjg8ug': {
       'es': 'Inicio',
@@ -233,67 +344,249 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Home',
     },
   },
-  // SignUpPage
+  // Profilepage
   {
-    '4q8mxllv': {
-      'es': 'Create an Account',
+    'idajaw1f': {
+      'es': 'Contraseña Actual:',
+      'en': 'Current Password:',
+    },
+    'p3tcm77l': {
+      'es': 'Contraseña',
+      'en': 'Current Password',
+    },
+    '9ge2rit1': {
+      'es': 'Contraseña is required',
       'en': '',
     },
-    'mos7oxca': {
-      'es': 'First name',
-      'en': '',
+    '0jjvb5oz': {
+      'es': 'Please choose an option from the dropdown',
+      'en': 'Please choose an option from the dropdown',
     },
-    'luxakmdn': {
-      'es': 'Last Name',
-      'en': '',
+    'acq6skrb': {
+      'es': 'Contraseña Nueva:',
+      'en': 'New Password:',
     },
-    'r364rim4': {
-      'es': 'Email',
-      'en': '',
+    'ian90nc9': {
+      'es': 'Contraseña Nueva',
+      'en': 'New Password',
     },
-    '6rer3psr': {
-      'es': 'email',
-      'en': '',
+    'hpkildl4': {
+      'es': 'Se requiere contraseña',
+      'en': 'Password is required',
     },
-    '08a40y4j': {
-      'es': 'Password',
-      'en': '',
+    'qnnp1jc8': {
+      'es': 'Al menos 7 numeros o letras',
+      'en': 'At least 7 numbers or letters',
     },
-    '56w2v43q': {
-      'es': 'password',
-      'en': '',
+    'w4b261t2': {
+      'es': 'Se requiere mayuscula',
+      'en': 'Capital letters are required.',
     },
-    'vnfqp6oy': {
-      'es': 'Confirm password',
-      'en': '',
+    'eedlp42p': {
+      'es': 'Por favor, elija una opción del menú desplegable.',
+      'en': 'Please choose an option from the dropdown',
     },
-    'ieccji7b': {
-      'es': 'confirm password',
-      'en': '',
+    'h5v7sqsv': {
+      'es': 'Confirme Contraseña:',
+      'en': 'Confirm new Password:',
     },
-    'fqcfo5jf': {
-      'es': 'Birthdate',
-      'en': '',
+    '3ibroobj': {
+      'es': 'Contraseña Nueva',
+      'en': 'Confirm New Password',
     },
-    'omqxmdvx': {
-      'es': 'mm/dd/yyyy',
-      'en': '',
+    'xv86bwbr': {
+      'es': 'Se requiere contraseña',
+      'en': 'Password is required',
     },
-    'c0zwoku9': {
-      'es': 'Weekly limit:',
-      'en': '',
+    'olzrdjar': {
+      'es': 'Por favor, elija una opción del menú desplegable.',
+      'en': 'Please choose an option from the dropdown',
     },
-    'fygv3fdo': {
-      'es': 'Weekly limit',
-      'en': '',
+    '6nfciu3p': {
+      'es': 'Guardar',
+      'en': 'Save',
     },
-    '3281meg8': {
-      'es': 'Sign In',
-      'en': '',
+    'hcw829ls': {
+      'es': 'Borrar Cuenta',
+      'en': 'Delete',
     },
-    'k68z08j7': {
-      'es': 'Casa',
+    'eo4ujd93': {
+      'es': 'Nickname:',
+      'en': 'Nickname:',
+    },
+    'a16j1s65': {
+      'es': 'Correo Electronico:',
+      'en': 'Email:',
+    },
+    '44q5km9y': {
+      'es': 'user UID:',
+      'en': 'user UID:',
+    },
+    'mavxi280': {
+      'es': 'Pagina de Perfil',
+      'en': 'ProfilePage',
+    },
+    '4ymk0y4j': {
+      'es': 'Home',
       'en': 'Home',
+    },
+  },
+  // createTask
+  {
+    '8oqti3be': {
+      'es': 'Subject:',
+      'en': 'Email',
+    },
+    'wloywkdl': {
+      'es': 'Subject',
+      'en': '',
+    },
+    'v4tsul5p': {
+      'es': 'Se necesita un gmail valido',
+      'en': 'A valid Gmail address is required.',
+    },
+    'z3mbkjpc': {
+      'es': 'Por favor, elija una opción del menú desplegable.',
+      'en': 'Please choose an option from the dropdown',
+    },
+    '22oqa7s3': {
+      'es': 'Description:',
+      'en': 'Nickname',
+    },
+    'el8ona8q': {
+      'es': 'Descripction',
+      'en': '',
+    },
+    'uiw7q5ef': {
+      'es': 'El apodo es necesario ',
+      'en': 'Nickname is required',
+    },
+    'pyl6y3e1': {
+      'es': 'El minimo de letras es de 3',
+      'en': 'The minimum number of letters is 3',
+    },
+    '4jv6njwz': {
+      'es': 'El maximo de letras es de 10',
+      'en': 'The maximum number of letters is 10.',
+    },
+    'ma2l9iea': {
+      'es': 'solo letras, sin espacios',
+      'en': 'Only letters are allowed and no spaces',
+    },
+    'kbngi903': {
+      'es': 'Por favor, elija una opción del menú desplegable.',
+      'en': 'Please choose an option from the dropdown',
+    },
+    '6p457i7x': {
+      'es': 'Due Date Text:',
+      'en': 'Birthdate',
+    },
+    '8uv95ele': {
+      'es': 'mm/dd/yyyy',
+      'en': 'mm/dd/yyyy',
+    },
+    'lefoebkh': {
+      'es': 'mm/dd/yyyy es necesario',
+      'en': 'mm/dd/yyyy is required',
+    },
+    '1ndzk7d8': {
+      'es': 'Por favor, elija una opción del menú desplegable.',
+      'en': 'Please choose an option from the dropdown',
+    },
+    'zyr3oey3': {
+      'es': 'Create',
+      'en': '',
+    },
+    'icb0vs7r': {
+      'es': 'Cancel',
+      'en': '',
+    },
+    '676h1snk': {
+      'es': 'Create Task',
+      'en': '',
+    },
+    '56r3o5ev': {
+      'es': 'Home',
+      'en': '',
+    },
+  },
+  // editTaskPage
+  {
+    '8568i2f9': {
+      'es': 'Subject:',
+      'en': 'Email',
+    },
+    'hstoq3xc': {
+      'es': 'Subject',
+      'en': '',
+    },
+    'pz0q6k1l': {
+      'es': 'Se necesita un gmail valido',
+      'en': 'A valid Gmail address is required.',
+    },
+    'xl3jkmn9': {
+      'es': 'Por favor, elija una opción del menú desplegable.',
+      'en': 'Please choose an option from the dropdown',
+    },
+    '2unxvlmz': {
+      'es': 'Description:',
+      'en': 'Nickname',
+    },
+    'lrm6prn6': {
+      'es': 'Descripction',
+      'en': '',
+    },
+    's1gtpe8v': {
+      'es': 'El apodo es necesario ',
+      'en': 'Nickname is required',
+    },
+    'wv7ocqvg': {
+      'es': 'El minimo de letras es de 3',
+      'en': 'The minimum number of letters is 3',
+    },
+    'g6hyu83z': {
+      'es': 'El maximo de letras es de 10',
+      'en': 'The maximum number of letters is 10.',
+    },
+    'vkwqb0hz': {
+      'es': 'solo letras, sin espacios',
+      'en': 'Only letters are allowed and no spaces',
+    },
+    'pnzmn1rf': {
+      'es': 'Por favor, elija una opción del menú desplegable.',
+      'en': 'Please choose an option from the dropdown',
+    },
+    '0you2z3u': {
+      'es': 'Due Date Text:',
+      'en': 'Birthdate',
+    },
+    'z2es4utz': {
+      'es': 'mm/dd/yyyy',
+      'en': 'mm/dd/yyyy',
+    },
+    'b9wt0t2t': {
+      'es': 'mm/dd/yyyy es necesario',
+      'en': 'mm/dd/yyyy is required',
+    },
+    'tyqx8xke': {
+      'es': 'Por favor, elija una opción del menú desplegable.',
+      'en': 'Please choose an option from the dropdown',
+    },
+    'n13hpn4i': {
+      'es': 'Save',
+      'en': '',
+    },
+    'wpwzc90a': {
+      'es': 'Cancel',
+      'en': '',
+    },
+    'ap3hbvf7': {
+      'es': 'Edit Task',
+      'en': '',
+    },
+    'b47zji5m': {
+      'es': 'Home',
+      'en': '',
     },
   },
   // Miscellaneous

@@ -18,3 +18,9 @@ DocumentReference parseUserDocument(String documentId) {
       FirebaseFirestore.instance.collection('users').doc(documentId);
   return documentReference;
 }
+
+String formatDate(DateTime value) {
+  final DateFormat formatter = DateFormat('MM/dd/yyyy');
+  final String formatedDate = formatter.format(value);
+  return formatedDate;
+}

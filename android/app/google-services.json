@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "439950448525",
-    "project_id": "proyectomoviles-g3",
-    "storage_bucket": "proyectomoviles-g3.firebasestorage.app"
+    "project_number": "181963553190",
+    "project_id": "gestor-tareas-josef",
+    "storage_bucket": "gestor-tareas-josef.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:439950448525:android:9320fabdb7236ace1bcfc4",
+        "mobilesdk_app_id": "1:181963553190:android:7171f983762c5e49b87767",
         "android_client_info": {
           "package_name": "com.mycompany.gestordetareas.josef"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCTIk6G0VkMYlWAfDH-PPFUORXaFHSz1To"
+          "current_key": "AIzaSyAz-xMbh5jSmLu9MaiJnDrQWofSghH9oSI"
         }
       ],
       "services": {
